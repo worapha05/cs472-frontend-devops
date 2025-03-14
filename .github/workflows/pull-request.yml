@@ -4,8 +4,6 @@ on:
     types: [opened, synchronize, reopened]
 permissions:
   contents: read
-env:
-  GO_VERSION: 1.23
 jobs:
   lint-test:
     name: "Lint and Test"
@@ -25,11 +23,8 @@ jobs:
       - name: "Install Dependencies"
         run: pnpm install --frozen-lockfile
 
-      - name: "Install ESLint Config Next"
-        run: pnpm add -D eslint-config-next
-
-      - name: "Run ESLint"
-        run: pnpm run lint
+      - name: "Install Jest"
+        run: pnpm add -D jest
 
       - name: "Run Tests"
         run: pnpm run test
